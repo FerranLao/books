@@ -7,7 +7,9 @@ const bookSchema = new Schema(
     price:{type:Number,required:true},
     year:{type:Number,required:true},
     author:{type:String,required:true},
-    category:{type:String,enum:["Fiction","Romance","Fantasy","Science fiction","Terror","History"]}
+    category:{type:String,enum:["Fiction","Romance","Fantasy","Science fiction","Terror","History"]},
+    img:{type:String,required:true
+    }
   },
   { timestamps: true }
 );

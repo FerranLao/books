@@ -32,16 +32,17 @@ const categories = [
   "Terror",
   "History"
 ];
+
 const bookGenerator = () => ({
   title: nameGenerator().dashed,
   price: Math.round((Math.random() * (50 - 5) + 5)*100)/100,
   year: Math.round(Math.random() * (2019 - 1989) + 1989),
   author: authors[Math.floor(Math.random() * authors.length)],
-  category: categories[Math.floor(Math.random() * categories.length)]
-});
+  category: categories[Math.floor(Math.random() * categories.length)],
+  img:"https://marketplace.canva.com/EADajpcXwvU/1/0/501w/canva-rust-orange-lioness-vintage-book-cover-2r7-sbV3ztw.jpg"});
 
 const books = new Array(150).fill("").map(e => bookGenerator());
-console.log(books);
+Book.collection.drop()
 Promise.all(books.map(async book => await Book.create(book)))
   .then(() => {
     mongoose.disconnect();
